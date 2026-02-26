@@ -14,11 +14,87 @@
 */
 
 body {
-    background-color: #efe5c7;
+    background-color: #a6d2a1;
     font-family: Arial, Helvetica, sans-serif;
 
+}
+h1{
+    font-size: 36px;
+    margin: unset;
 }
 p{
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
+ }
+
+h1, h2 {
+    color: rgb(47, 80, 69);
 }
+
+header, footer{
+    background-color: #e9ecc0;
+    /* 1rem většinou 16px */
+    /* padding: 1rem; 
+    padding: 0,5rem 1rem; */
+    padding: 0,5rem 1rem 1,5rem 2rem;
+}
+
+footer p {
+    margin:unset;
+}
+
+.page-wrapper{ /* odkazuji se na div "page-wrapper" v index.html */
+ width: 90%;
+ /* zarovnání na střed */
+ margin: 0 auto;
+
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+nav li{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    /* flew: 1 1 100px; */
+}
+
+nav a {
+    display: block;
+    background-color: #e9ecc0;
+    color: rgb(77, 113, 81);
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 10px;
+    white-space: nowrap;
+
+}
+
+.grid-container{
+    display: grid;
+
+    /* počet auto udává počet sloupečků*/
+    /* grid-template-columns: auto auto auto; 
+    gap: 1rem; */
+
+    /* grid-template-columns: 2fr 4fr;
+    gap: 1rem; */
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background-color: #e9ecc0;
+    padding: 1rem;
+    border-radius: 10px;
+    /*margin-top: 1rem;*/
+    border: 2px solid rgb(173, 157, 127);
+}
+
