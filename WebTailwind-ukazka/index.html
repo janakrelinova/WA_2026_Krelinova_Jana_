@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles/styles.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Web 01 - Křelinová Jana</title>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-myPrimaryColor: oklch(82.3% 0.12 346.018);
+      }
+
+      @layer base{
+        h2 {
+            @apply text-2xl mt-4
+        }
+        p{
+            @apply text-base font-serif mt-2
+        }
+
+        .card{
+            @apply bg-pink-200 p-5 rounded-xl 
+        }
+
+        nav li{
+            @apply flex-grow basis-full 
+        }
+
+        nav a {
+            @apply
+            block
+            bg-pink-400
+            rounded-md
+            py-2
+            px-4
+            text-center
+            no-underline
+            whitespace-nowrap
+            hover:bg-pink-500
+            
+        }
+      }
+
+    </style>
+
+</head>
+<body class="bg-pink-100 text-green-950">
+    <div class = "page-wrapper w-[95%] mx-auto lg:w-[80%]">
+       <header class="bg-myPrimaryColor px-4 py-6">
+            <h1 class="text-4xl">WA 2026 - první web</h1>
+       </header> 
+       <nav class="my-4">
+        <ul class="flex gap-3 list-none p-0">
+            <li><a href="index.html">Domů</a></li>
+            <li><a href="#">O nás</a></li>
+            <li><a href="#">Kontkat</a></li>
+            <li><a href="https://www.ef.tul.cz/">Web EF TUL</a></li>
+
+        </ul>
+       </nav>
+       <main>
+            <section class = "grid-container grid gap-4 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+                <article class = "card">
+                    <h2>Titulek článku 1</h2>
+                    <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit.</b> At facere perspiciatis nemo corporis illum veritatis temporibus, maiores quis ut. Fugit harum numquam nisi fuga modi maxime reprehenderit vitae atque cumque. </p>
+
+                </article>
+                <article class = "card">
+                    <h2>Titulek článku 2</h2>
+                    <p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit.</strong> At facere perspiciatis nemo corporis illum veritatis temporibus, maiores quis ut. Fugit harum numquam nisi fuga modi maxime reprehenderit vitae atque cumque. </p>
+                    
+                </article>
+                <article class = "card">
+                    <h2>Titulek článku 3</h2>
+                    <p><em>Lorem ipsum dolor sit amet consectetur adipisicing elit.</em> At facere perspiciatis nemo corporis illum veritatis temporibus, maiores quis ut. Fugit harum numquam nisi fuga modi maxime reprehenderit vitae atque cumque. </p>
+                    <p><i>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</i> Recusandae odit officia sequi deleniti at ex in. Cum illo praesentium, perferendis nemo porro laborum ad quibusdam nobis tenetur consequuntur, quas eaque?</p>
+                </article>
+                <article class = "card">
+                    <h2>Titulek článku 4</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At facere perspiciatis nemo corporis illum veritatis temporibus, maiores quis ut. Fugit harum numquam nisi fuga modi maxime reprehenderit vitae atque cumque. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus tenetur perferendis laborum velit, aspernatur reiciendis placeat facilis vero natus temporibus, optio delectus blanditiis quo. Enim minus nobis architecto esse commodi?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis doloribus recusandae impedit accusantium, nihil nostrum harum veritatis temporibus omnis vel tempora dignissimos repudiandae illo eius, deserunt odit laudantium perspiciatis libero?</p>
+                </article>
+                <article class = "card">
+                    <h2>Titulek článku 5</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At facere perspiciatis nemo corporis illum veritatis temporibus, maiores quis ut. Fugit harum numquam nisi fuga modi maxime reprehenderit vitae atque cumque. </p>
+
+                </article>
+            </section>
+       </main>
+
+        <footer class="bg-myPrimaryColor px-4 py-6 text-center">
+            <p>&copy; WA&nbsp; 2026 - Jana Křelinová</p>
+        </footer>
+
+
+
+    </div>
+</body>
+</html>
