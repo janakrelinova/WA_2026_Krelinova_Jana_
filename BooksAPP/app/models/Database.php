@@ -33,9 +33,9 @@ class Database {
 
 // Pro otestování připojení stačí tento soubor spustit
 // Můžete tento kód zakomentovat po ověření
-$database = new Database();
+//$database = new Database();
 
 // na objektu uloženém v proměnné $database zavoláme metodu getConnection()
-$database->getConnection();
+//$database->getConnection();
 
 
