@@ -37,4 +37,14 @@ class Book {
             ':images'      => json_encode($images)
         ]);
     }
+
+    // Získání všech knih z databáze
+    public function getAll() {
+        $sql = "SELECT * FROM books ORDER BY id DESC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        
+        // Vrací pole asociativních polí (každý řádek z DB je jedno pole)
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

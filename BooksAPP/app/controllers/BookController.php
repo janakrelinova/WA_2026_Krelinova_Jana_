@@ -2,15 +2,23 @@
 
 class BookController {
 
-    // 0. Výchozí metoda pro zobrazení úvodní stránky
+        // 0. Výchozí metoda pro zobrazení úvodní stránky včetně seznamu knih
     public function index() {
-        // V dalších krocích se zde přidá komunikace s Modelem pro získání dat z databáze
-        // (např. načtení všech uložených knih)
+        // Načtení potřebných tříd
+        require_once '../app/models/Database.php';
+        require_once '../app/models/Book.php';
+
+        // Vytvoření připojení k databázi
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // Inicializace modelu a získání dat
+        $bookModel = new Book($db);
+        $books = $bookModel->getAll(); // Proměnná $books nyní obsahuje pole všech knih
         
-        // Nyní se pouze načte (vloží) připravený soubor s HTML strukturou
+        // Načte se (vloží) připravený soubor s HTML strukturou
         require_once '../app/views/books/books_list.php';
     }
-
     // 1. Zobrazení formuláře pro přidání nové knihy
     public function create() {
         // Zde se pouze načte (vloží) připravený soubor s HTML formulářem

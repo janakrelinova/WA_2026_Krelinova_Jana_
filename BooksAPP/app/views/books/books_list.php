@@ -19,34 +19,39 @@
 
     </header>
 
-    <main>
+       <main>
         <h2>Dostupné knihy</h2>
         
-        <?php if (!empty($books)): ?>
-            <table border="1" style="width:100%; border-collapse: collapse;">
+        <?php if (empty($books)): ?>
+            <p>V databázi se zatím nenachází žádné knihy.</p>
+        <?php else: ?>
+            <table>
                 <thead>
-                    <tr style="background-color: #f2f2f2;">
-                        <th>Název</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Název knihy</th>
                         <th>Autor</th>
-                        <th>ISBN</th>
                         <th>Rok vydání</th>
+                        <th>Cena</th>
+                        <th>Akce</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($books as $book): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($book['title']); ?></td>
-                            <td><?php echo htmlspecialchars($book['author']); ?></td>
-                            <td><?php echo htmlspecialchars($book['isbn']); ?></td>
-                            <td><?php echo htmlspecialchars($book['year']); ?></td>
+                            <td><?= htmlspecialchars($book['id']) ?></td>
+                            <td><?= htmlspecialchars($book['title']) ?></td>
+                            <td><?= htmlspecialchars($book['author']) ?></td>
+                            <td><?= htmlspecialchars($book['year']) ?></td>
+                            <td><?= htmlspecialchars($book['price']) ?> Kč</td>
+                            <td>
+                                <a href="<?= BASE_URL ?>/index.php?url=book/show/<?= $book['id'] ?>">Detail</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php else: ?>
-            <p>V databázi zatím nejsou žádné knihy nebo tabulka neexistuje.</p>
         <?php endif; ?>
-
     </main>
 
     
