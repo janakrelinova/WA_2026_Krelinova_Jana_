@@ -11,8 +11,8 @@
         
      <nav>
         <ul>
-            <li><a href="/WA_2026_Krelinova_Jana_/BooksAPP/public/index.php">Seznam knih (Domů)</a></li>
-            <li><a href="/WA_2026_Krelinova_Jana_/BooksAPP/public/index.php?url=book/create">Přidat novou knihu</a></li>
+            <li><a href="<?= BASE_URL ?>/index.php">Seznam knih (Domů)</a></li>
+            <li><a href="<?= BASE_URL ?>/index.php?url=book/create">Přidat novou knihu</a></li>
         </ul>
     </nav>
        

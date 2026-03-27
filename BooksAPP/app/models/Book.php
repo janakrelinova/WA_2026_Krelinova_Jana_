@@ -1,24 +1,40 @@
 <?php
-// Načtení základní třídy pro připojení k DB
-require_once '../app/models/Database.php';
 
 class Book {
-    private $db;
+    private PDO $db;
 
-    public function __construct() {
-        // Při vytvoření objektu Book se automaticky připojíme k DB
-        $database = new Database();
-        $this->db = $database->getConnection();
+    public function __construct(PDO $db) {
+        $this->db = $db;
     }
 
-    // Metoda pro získání všech knih z databáze
-    public function getAll() {
-        // SQL dotaz pro výběr všech záznamů
-        $query = "SELECT * FROM books ORDER BY id DESC";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
+    public function create(
+        string $title, 
+        string $author,
+        string $category,
+        string $subcategory,
+        int $year,
+        float $price,
+        string $isbn,
+        string $description,
+        string $link,
+        array $images
+    ): bool {
+        $sql = "INSERT INTO books (title, author, category, subcategory, year, price, isbn, description, link, images)
+                VALUES (:title, :author, :category, :subcategory, :year, :price, :isbn, :description, :link, :images)";
         
-        // Vrátí pole všech nalezených řádků
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([
+            ':title'       => $title,
+            ':author'      => $author,
+            ':category'    => $category,
+            ':subcategory' => $subcategory ?:null,
+            ':year'        => $year,
+            ':price'       => $price,
+            ':isbn'        => $isbn,
+            ':description' => $description,
+            ':link'        => $link,
+            ':images'      => json_encode($images)
+        ]);
     }
 }
