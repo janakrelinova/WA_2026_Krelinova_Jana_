@@ -1,4 +1,9 @@
 <?php
+// Nastartování relací pro ukládání dočasných dat (Flash zprávy)
+session_start();
+
+// ... zbytek souboru index.php zůstává stejný ...
+
 
 //pro účely výuky a ladění na lokálním serveru (např.: XAMPP)
 //je vhodné zapnout kompletní zobrazování chyb
