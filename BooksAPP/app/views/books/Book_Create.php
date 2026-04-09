@@ -1,85 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <h2>Přidat novou knihu</h2>
-        <p>Vyplňte údaje a uložte knihu do databáze</p>
-    </div>
 
-    <div>
-       <form action="<?= BASE_URL ?>/index.php?url=book/store" method="post" enctype="multipart/form-data">
-            <div>
-                <div>
-                <label for="title">Název knihy <span>*</span></label>
-                <input type="text" id="title" name= "title" required>
-                </div>
+<?php require_once '../app/views/layout/header.php'; ?>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="mb-10">
+                <h2 class="text-4xl font-extrabold text-slate-950 tracking-tighter">Přidat novou knihu</h2>
+                <p class="text-slate-500 text-lg mt-2">Vyplňte údaje a uložte knihu do databáze</p>
+            </div>
 
-                <div>
-                <label for="author">Autor <span>*</span></label>
-                <input type="text" id="author" name= "author"placeholder="Přijmení Jméno" required>
-                </div>
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-2xl overflow-hidden">
+                <form action="<?= BASE_URL ?>/index.php?url=book/store" method="post" enctype="multipart/form-data" class="p-8 md:p-12">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <div class="md:col-span-2">
+                            <label for="title" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Název knihy <span class="text-brand">*</span></label>
+                            <input type="text" id="title" name="title" required 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none text-lg shadow-sm">
+                        </div>
 
-                <div>
-                <label for="isbn">ISBN <span>*</span></label>
-                <input type="text" id="isbn" name= "isbn" required>
-                </div>
+                        <div>
+                            <label for="author" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Autor <span class="text-brand">*</span></label>
+                            <input type="text" id="author" name="author" placeholder="Přijmení Jméno" required 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm">
+                        </div>
 
-                <div>
-                <label for="category">Kategorie </label>
-                <input type="text" id="category" name= "caregory" >
-                </div>
+                        <div>
+                            <label for="isbn" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">ISBN <span class="text-brand">*</span></label>
+                            <input type="text" id="isbn" name="isbn" required 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none font-mono shadow-sm">
+                        </div>
 
-                <div>
-                <label for="subcategory">Podkategorie </label>
-                <input type="text" id="subcategory" name= "subcategory" >
-                </div>
+                        <div>
+                            <label for="category" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Kategorie</label>
+                            <input type="text" id="category" name="caregory" 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm">
+                        </div>
 
-                <div>
-                <label for="year">Rok vydání <span>*</span></label>
-                <input type="number" id="year" name= "year" required>
-                </div>
+                        <div>
+                            <label for="subcategory" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Podkategorie</label>
+                            <input type="text" id="subcategory" name="subcategory" 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm">
+                        </div>
 
-                <div>
-                <label for="price">Cena knihy</label>
-                <input type="number" id="price" name= "price" step="0.5">
-                </div>
+                        <div>
+                            <label for="year" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Rok vydání <span class="text-brand">*</span></label>
+                            <input type="number" id="year" name="year" required 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm font-mono">
+                        </div>
 
-                <div>
-                <label for="link">Odkaz</label>
-                <input type="text" id="link" name= "link" >
-                </div>
+                        <div>
+                            <label for="price" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Cena knihy (Kč)</label>
+                            <input type="number" id="price" name="price" step="0.5" 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm font-mono text-brand font-bold">
+                        </div>
 
-                <div>
-                    <label for="description">Popis knihy</label>
-                    <textarea name="description" id="description" rows="5" cols="25"></textarea>
-                </div>
+                        <div class="md:col-span-2">
+                            <label for="link" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Externí odkaz</label>
+                            <input type="text" id="link" name="link" placeholder="https://..."
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm">
+                        </div>
 
-                <div>
-                        <label>Obrázky (můžete nahrát více)</label>
-                        <label>
-                            <span >Klikni pro výběr souborů</span>
-                            <span >JPG / PNG / WebP – více souborů najednou</span>
-                            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
-                        </label>
+                        <div class="md:col-span-2">
+                            <label for="description" class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Popis knihy</label>
+                            <textarea name="description" id="description" rows="5" 
+                                class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm resize-none"></textarea>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide">Obrázky (můžete nahrát více)</label>
+                            <label class="group relative flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-slate-300 rounded-2xl cursor-pointer bg-slate-50 hover:bg-brand-light hover:border-brand transition-all">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <span class="text-3xl mb-2 group-hover:scale-110 transition">📸</span>
+                                    <p class="text-sm text-slate-600 font-semibold group-hover:text-brand">Klikni pro výběr souborů</p>
+                                    <p class="text-xs text-slate-400 mt-1">JPG, PNG nebo WebP (vícenásobný výběr)</p>
+                                </div>
+                                <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
+                            </label>
+                        </div>
+
                     </div>
 
+                    <div class="mt-12 pt-8 border-t border-slate-100 flex justify-end">
+                        <button type="submit" class="w-full md:w-auto bg-brand text-white px-10 py-4 rounded-xl font-extrabold text-lg hover:bg-brand-dark transition shadow-lg shadow-sky-100 flex items-center justify-center space-x-2 active:scale-95">
+                            <span>💾</span>
+                            <span>Uložit knihu do databáze</span>
+                        </button>
+                    </div>
 
-
-
-
-
-
-                <div>
-                    <button type="submit"> Uložit knihu do DB </button>
-                </div>
+                </form>
             </div>
-        </form>
-    </div>
-</body>
-</html>
+            
+            <p class="text-center text-slate-400 text-sm mt-8">Pole označená <span class="text-brand">*</span> jsou povinná.</p>
+        </div>
+    </main>
+<?php require_once '../app/views/layout/footer.php'; ?>
+  
