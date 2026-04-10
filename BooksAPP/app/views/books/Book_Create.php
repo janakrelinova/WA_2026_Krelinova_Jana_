@@ -67,18 +67,30 @@
                                 class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-brand-light focus:border-brand transition outline-none shadow-sm resize-none"></textarea>
                         </div>
 
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide">Obrázky (můžete nahrát více)</label>
-                            <label class="group relative flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-slate-300 rounded-2xl cursor-pointer bg-slate-50 hover:bg-brand-light hover:border-brand transition-all">
+                       <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                            Obrázky knihy
+                        </label>
+                        
+                        <div class="w-full">
+                            <label for="images" class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-200 border-dashed rounded-2xl cursor-pointer bg-white hover:bg-brand-light hover:border-brand transition-all shadow-sm">
+                                
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <span class="text-3xl mb-2 group-hover:scale-110 transition">📸</span>
-                                    <p class="text-sm text-slate-600 font-semibold group-hover:text-brand">Klikni pro výběr souborů</p>
-                                    <p class="text-xs text-slate-400 mt-1">JPG, PNG nebo WebP (vícenásobný výběr)</p>
-                                </div>
-                                <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
-                            </label>
-                        </div>
-
+                                    <span class="text-3xl mb-1 opacity-40 group-hover:opacity-100 transition">📸</span>
+                                    
+                                    <span id="file-title" class="text-sm text-slate-600 font-semibold transition-colors">
+                                        Klikni pro výběr souborů
+                                    </span>
+                                    
+                                    <span id="file-info" class="text-xs text-slate-400 mt-1 text-center px-4 tracking-tight">
+                                        Žádné soubory nebyly vybrány
+                                    </span>
+                         </div>
+            
+            <input type="file" id="images" name="images[]" multiple accept="image/*" class="hidden">
+        </label>
+    </div>
+</div>
                     </div>
 
                     <div class="mt-12 pt-8 border-t border-slate-100 flex justify-end">
@@ -94,5 +106,38 @@
             <p class="text-center text-slate-400 text-sm mt-8">Pole označená <span class="text-brand">*</span> jsou povinná.</p>
         </div>
     </main>
+
+    <script>
+    // Najdeme naše HTML prvky podle ID
+    const fileInput = document.getElementById('images');
+    const fileTitle = document.getElementById('file-title');
+    const fileInfo = document.getElementById('file-info');
+
+    // Posloucháme událost 'change'
+    fileInput.addEventListener('change', function(event) {
+        const files = event.target.files;
+        
+        if (files.length === 0) {
+            // Uživatel výběr zrušil - vrátíme šedý design
+            fileTitle.textContent = 'Klikni pro výběr souborů';
+            fileTitle.className = 'text-sm text-slate-600 font-semibold group-hover:text-brand';
+            fileInfo.textContent = 'JPG, PNG nebo WebP (vícenásobný výběr)';
+            fileInfo.className = 'text-xs text-slate-400 mt-1';
+        } else if (files.length === 1) {
+            // Vybrán 1 soubor - zmodráme a ukážeme název
+            fileTitle.textContent = 'Soubor připraven ✅';
+            fileTitle.className = 'text-sm text-brand font-bold'; // Použije tvou modrou
+            fileInfo.textContent = 'Vybráno: ' + files[0].name;
+            fileInfo.className = 'text-xs text-brand-dark font-medium mt-1';
+        } else {
+            // Vybráno více souborů - zmodráme a ukážeme počet
+            fileTitle.textContent = 'Soubory připraveny ✅';
+            fileTitle.className = 'text-sm text-brand font-bold';
+            fileInfo.textContent = 'Celkem vybráno: ' + files.length + ' obrázků';
+            fileInfo.className = 'text-xs text-brand-dark font-medium mt-1';
+        }
+    });
+</script>
+
 <?php require_once '../app/views/layout/footer.php'; ?>
   
